@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import db.DB;
@@ -19,7 +18,28 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		inserir();
+		atualizar();
+	}
+
+	private static void atualizar() {
+
+		try {
+			ps = conn.prepareStatement(
+					"UPDATE seller " + "SET BaseSalary = BaseSalary + ? " + "WHERE " + "(DepartmentId = ?)");
+			// st.
+			ps.setDouble(1, 200.0);
+			ps.setInt(2, 2);
+
+			int rowsAffected = ps.executeUpdate();
+
+			System.out.println("Done! Rows affected: " + rowsAffected);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.closeStatement(ps);
+			DB.closeConnection();
+		}
 	}
 
 	private static void inserir() {
@@ -49,7 +69,7 @@ public class Program {
 			} else {
 				System.out.println("No row affected!");
 			}
-		} catch (SQLException  e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DB.closeStatement(ps);
