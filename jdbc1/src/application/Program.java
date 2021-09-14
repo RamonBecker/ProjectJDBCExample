@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 
 import db.DB;
+import db.DBIntegrityException;
 
 public class Program {
 
@@ -18,7 +19,28 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		atualizar();
+		deletar();
+	}
+	
+	private static void deletar() {
+		try {
+			ps = conn.prepareStatement(
+					"DELETE FROM department "
+					+ "WHERE "
+					+ "Id = ?");
+			
+			ps.setInt(1, 2);
+
+			int rowsAffected = ps.executeUpdate();
+
+			System.out.println("Done! Rows affected: " + rowsAffected);
+
+		} catch (SQLException e) {
+			throw new DBIntegrityException(e.getMessage());
+		} finally {
+			DB.closeStatement(ps);
+			DB.closeConnection();
+		}
 	}
 
 	private static void atualizar() {
