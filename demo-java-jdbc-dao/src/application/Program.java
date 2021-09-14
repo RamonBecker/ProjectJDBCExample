@@ -9,6 +9,8 @@ import model.entities.Seller;
 
 public class Program {
 
+	private static List<Seller> list;
+	
 	public static void main(String[] args) {
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
@@ -19,9 +21,16 @@ public class Program {
 		//System.out.println(seller);
 		
 		System.out.println("\n=== Teste 2: Seller findById ===");
-
-		Department department = new Department(2, null);
-		List<Seller> list = sellerDao.findByDeparment(department);
+//
+//		Department department = new Department(2, null);
+//		List<Seller> list = sellerDao.findByDeparment(department);
+//		for (Seller obj : list) {
+//			System.out.println(obj);
+//		}
+		
+		System.out.println("\n=== Teste 3: Seller findAll ===");
+	
+		list = sellerDao.findAll();
 		for (Seller obj : list) {
 			System.out.println(obj);
 		}
