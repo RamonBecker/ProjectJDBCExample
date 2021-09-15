@@ -11,16 +11,15 @@ import model.entities.Seller;
 public class Program {
 
 	private static List<Seller> list;
-	
+
 	public static void main(String[] args) {
 		SellerDao sellerDao = DaoFactory.createSellerDao();
-		
-		
+
 //		System.out.println("=== Teste 1: Seller findById ===");
-		//Seller seller = sellerDao.findById(3);
-		
-		//System.out.println(seller);
-		
+//		Seller seller = sellerDao.findById(3);
+
+		// System.out.println(seller);
+
 //		System.out.println("\n=== Teste 2: Seller findById ===");
 //
 //		Department department = new Department(2, null);
@@ -28,21 +27,31 @@ public class Program {
 //		for (Seller obj : list) {
 //			System.out.println(obj);
 //		}
-		
+
 //		System.out.println("\n=== Teste 3: Seller findAll ===");
-	
+
 //		list = sellerDao.findAll();
 //		for (Seller obj : list) {
 //			System.out.println(obj);
 //		}
 //		
-		System.out.println("\n=== Teste 4: Seller INSERT ===");
+//		System.out.println("\n=== Teste 4: Seller INSERT ===");
+//
+//		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, new Department(2, null));
+//		
+//		sellerDao.insert(newSeller);
+//		
+//		System.out.println("Inserted! New id = "+newSeller.getId());
 
-		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, new Department(2, null));
+		System.out.println("\n=== Teste 5: Seller UPDATE ===");
+
+		Seller seller = new Seller(1, "Greg", "greg@gmail.com", new Date(), 4000.0, new Department(2, null));
 		
-		sellerDao.insert(newSeller);
+		seller.setName("Marta Waine");
+
+		sellerDao.update(seller);
 		
-		System.out.println("Inserted! New id = "+newSeller.getId());
+		System.out.println("Update completed");
 	}
 
 }
