@@ -2,6 +2,9 @@ package application;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
+
+import javax.sound.midi.SysexMessage;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -43,15 +46,24 @@ public class Program {
 //		
 //		System.out.println("Inserted! New id = "+newSeller.getId());
 
-		System.out.println("\n=== Teste 5: Seller UPDATE ===");
-
-		Seller seller = new Seller(1, "Greg", "greg@gmail.com", new Date(), 4000.0, new Department(2, null));
+//		System.out.println("\n=== Teste 5: Seller UPDATE ===");
+//
+//		Seller seller = new Seller(1, "Greg", "greg@gmail.com", new Date(), 4000.0, new Department(2, null));
+//		
+//		seller.setName("Marta Waine");
+//
+//		sellerDao.update(seller);
+//		
+//		System.out.println("Update completed");
 		
-		seller.setName("Marta Waine");
-
-		sellerDao.update(seller);
+		System.out.println("\n=== Teste 6: Seller DELETE ===");
 		
-		System.out.println("Update completed");
+		System.out.println("Enter id for delete test: ");
+		
+		int id = new Scanner(System.in).nextInt();
+		
+		sellerDao.deleteById(id);
+		System.out.println("Delete completed");
 	}
 
 }
