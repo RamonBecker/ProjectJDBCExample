@@ -1,25 +1,27 @@
 package application;
 
+import java.util.List;
+
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
 
 public class Program2 {
 
-	private static DepartmentDao departmentDao = null;
+	private static DepartmentDao departmentDao = DaoFactory.createDeparmentDao();
 	private static Department department = null;
 
 	public static void main(String[] args) {
 //		insert();
 		
-		findByID();
+//		findByID();
+		
+		findAll();
 	}
 
 	private static void insert() {
 		System.out.println("=== Teste 1: Department INSERT ===");
-
-		departmentDao = DaoFactory.createDeparmentDao();
-
+		
 		department = new Department();
 		department.setName("Financial");
 		
@@ -30,9 +32,7 @@ public class Program2 {
 
 	private static void findByID() {
 		System.out.println("=== Test 2: Department FindByID ===");
-
-		departmentDao = DaoFactory.createDeparmentDao();
-
+		
 		department = departmentDao.findById(1);
 		
 		if(department != null) {
@@ -41,4 +41,20 @@ public class Program2 {
 			System.out.println("Not found deparment!");
 		}
 	}
+	
+	private static void findAll() {
+		
+		System.out.println("=== Test 3 Department FindByAll");
+		List<Department> departments = departmentDao.findAll();
+		
+		if(departments != null) {
+			for (Department department : departments) {
+				System.out.println(department);
+			}
+		}else {
+			System.out.println("Not found departments!");
+		}
+	}
+
+	
 }
