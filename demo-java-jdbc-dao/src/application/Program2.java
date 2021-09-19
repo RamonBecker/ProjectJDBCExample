@@ -18,7 +18,9 @@ public class Program2 {
 		
 //		findAll();
 		
-		update();
+//		update();
+		
+		delete();
 	}
 
 	private static void insert() {
@@ -63,5 +65,13 @@ public class Program2 {
 		Department department = new Department(1, "Games");
 		departmentDao.update(department);
 		System.out.println("Update completed!");
+	}
+	
+	private static void delete() {
+		System.out.println("=== Test 4 Department DELETE ===");
+		
+		departmentDao.deleteById(2);
+		
+		System.out.println("Delete completed!");
 	}
 }
