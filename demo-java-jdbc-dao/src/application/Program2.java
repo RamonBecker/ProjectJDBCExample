@@ -16,7 +16,9 @@ public class Program2 {
 		
 //		findByID();
 		
-		findAll();
+//		findAll();
+		
+		update();
 	}
 
 	private static void insert() {
@@ -56,5 +58,10 @@ public class Program2 {
 		}
 	}
 
-	
+	private static void update() {
+		System.out.println("=== Test 4 Department UPDATE ===");
+		Department department = new Department(1, "Games");
+		departmentDao.update(department);
+		System.out.println("Update completed!");
+	}
 }
